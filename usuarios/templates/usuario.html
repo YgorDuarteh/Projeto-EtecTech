@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <form method="POST">
+
+        {% csrf_token %}
+
+        <style>
+            body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #1e1e2f, #2e2e48);
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+form {
+  background-color: #2c2c3e;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  width: 300px;
+}
+
+form h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+  background-color: #44445a;
+  color: #fff;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+  outline: none;
+  background-color: #55556e;
+}
+
+button {
+  width: 100%;
+  padding: 0.6rem;
+  border: none;
+  border-radius: 8px;
+  background-color: #6a5acd;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #7b6eea;
+}
+
+        </style>
+
+        <div class="form-group">
+            {{ user_form.username.errors }}
+            <label>Nome de Usuário:</label> 
+            {{ user_form.username }}<br>
+        </div>
+        <div class="form-group">
+            {{ user_form.password1.errors }}
+            <label>Senha:</label> 
+            {{ user_form.password1 }}<br>    
+        </div>
+        <div class="form-group">
+            {{ user_form.password2.errors }}
+            <label>Confirmação de Senha:</label> 
+            {{ user_form.password2 }}<br>
+        </div>      
+
+        <input type="submit" value="Adicionar Usuário"
+        class="btn btn-primary">
+
+    </form>
+
+{% endblock %}
